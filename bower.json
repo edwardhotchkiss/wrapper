@@ -1,0 +1,31 @@
+{
+  "name": "Wrapper",
+  "version": "0.0.1",
+  "description": "Wraps any library/function/object within an AMD-compliant definition if possible, otherwise binding to `window`",
+  "author": "Edward Hotchkiss <edward@candidblend.la>",
+  "contributors":[
+    { "name": "Avi Deitcher", "github": "https://github.com/deitch/" }
+  ],
+  "main": "dist/wrapper-0.0.1.js",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "keywords":[
+    "amd",
+    "requirejs",
+    "wrapper",
+    "library",
+    "module"
+  ],
+  "homepage": "http://github.com/CandidBlend/Wrapper/",
+  "bugs": "https://github.com/CandidBlend/Wrapper/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CandidBlend/Wrapper.git"
+  },
+  "licenses":[{
+    "type":"MIT",
+    "url":"http://github.com/CandidBlend/Wrapper/LICENSE"
+  }]
+}
