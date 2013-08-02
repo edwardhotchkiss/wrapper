@@ -43,8 +43,11 @@ module.exports = function(grunt) {
           'Gruntfile.js',
           'src/**/*.js'
         ],
-        tasks: ['jshint','concat']
+        tasks: ['jshint','concat','']
       }
+    },
+    mocha: {
+      index: ['test/runner/index.html']
     }
   });
 
@@ -52,9 +55,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-mocha');
 
-  grunt.registerTask('build', ['jshint','concat','uglify']);
-  grunt.registerTask('default', ['jshint','watch']);
+  grunt.registerTask('test', ['mocha']);
+  grunt.registerTask('build', ['jshint','test','concat','uglify']);
+  grunt.registerTask('default', ['jshint','test','watch']);
 
 };
 

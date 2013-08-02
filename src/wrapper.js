@@ -3,7 +3,7 @@
  * @library wrapper.js
  * @author Edward Hotchkiss <edward@candidblend.la>
  * @contributor Avi Deitcher <avi@deitcher.net>
- * @description Wraps any function/module/object/lib within an
+ * @description wraps any function/module/object/lib within an
  * AMD-compliant definition if possible, otherwise binding to `window`
  * @license MIT
  */
@@ -12,20 +12,20 @@
 
   'use strict';
 
+  // format dep name to first char uppercase
+  function _formatDepName(d) {
+    return d.charAt(0).toUpperCase() + d.slice(1);
+  }
+
   // fn entry point
   function _wrapper(name, deps, fn) {
 
-    // format dep name to first char uppercase
-    function _formatDepName(d) {
-      return d.charAt(0).toUpperCase() + d.slice(1);
-    }
-
     // description window or empty obj depending on require being defined
-    var _root = (typeof(require) !== 'undefined' && require.amd) ?
+    var _root = (typeof(require) !== 'undefined') ?
       {} : window;
 
     // requirejs define or alternate
-    var _define = (typeof(define) === 'function' && define.amd) ? 
+    var _define = (typeof(define) === 'function' && define.amd) ?
       define : function(name, deps, fn) {
         var formated;
         // process deps

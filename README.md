@@ -23,9 +23,8 @@ If the user is using RequireJS, then nothing is aliased (excluding `wrapper`) to
 _Creates two modules, one which depends on the other_
 
 ```javascript
-
-// creates a simpler Logger module
-wrapper('Logger', [], function() {
+// basic console logging module
+wrapper('logger', [], function() {
   return {
     log: function(msg) {
       console.log(msg);
@@ -33,21 +32,16 @@ wrapper('Logger', [], function() {
   };
 });
 
-// create a mock "Blog" lib 
-wrapper('Blog', ['logger'], function(Logger) {
-  // lib constructor
-  var Blog = function(params) {
-    this.title = params.title || 'unknown';
-    return this;
+// trivial app that depends on "Logger"
+wrapper('trivial', ['logger'], function(Logger) {
+  var Trivial = function(name) {
+    this.name = name;
   };
-  Blog.prototype.init = function() {
-    // reference and use "Logger" module
-    Logger.log('init "Blog": '+this.title);
+  Trivial.prototype.init = function() {
+    Logger.log('initializing Trivial as: "'+this.name+'"');
   };
-  // return lib!
-  return Blog;
+  return Trivial;
 });
-
 ```
 
 _Your library/code works exactly as before. If you or a user aren't using RequireJS/AMD, then the usage is straight-forward: your library is aliased to window. In this case then, simple reference `Blog` or `window.Blog` (see below):_
@@ -55,42 +49,35 @@ _Your library/code works exactly as before. If you or a user aren't using Requir
 **Usage _WITHOUT_ RequireJS:**
 
 ```javascript
-
 // document ready
 $(function() {
-  var blog = new Blog({ title : 'wrapper crafted, mother approved!' });
-  blog.init();
+  (new Trivial('trivialWindow')).init();
 });
-
 ```
 
 **Usage _WITH_ RequireJS:**
 
 ```javascript
-
 // requirejs gobal config
 require.config({
   baseUrl: 'js/',
   optimize: 'none',
   inlineText: true,
   paths: {
-    'blog'  : 'src/blog.js'
+    'trivial'  : 'src/trivial.js'
   },
   shim: {
-    blog: {
-      exports: 'Blog',
+    trivial: {
+      exports: 'Trivial',
     }
   }
 });
 
 // document ready
 $(function() {
-  define(['blog'], function(Blog) {
-    var blog = new Blog({ title : 'wrapper crafted, mother approved!' });
-    blog.init();
+  require(['trivial'], function(Trivial) {
+    (new Trivial('trivialAMDRequire')).init();
   });
 });
-
 ```
-
 
