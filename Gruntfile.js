@@ -1,6 +1,6 @@
 
 /**
- * @description Watch, concat and minify for dist.
+ * @description watch, concat and build => minify for dist
  */
 
 module.exports = function(grunt) {
@@ -8,6 +8,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
+      options: {
+        banner: '// <%= pkg.name %> v<%= pkg.version %> \n// <%= pkg.homepage %>\n'
+      },
       build: {
         src: 'dist/wrapper-<%= pkg.version %>.js',
         dest: 'dist/wrapper-<%= pkg.version %>.min.js'

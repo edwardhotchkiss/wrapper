@@ -2,6 +2,7 @@
   "name": "wrapper",
   "description": "Wraps any library/function/object within an AMD-compliant definition if possible, otherwise binding to `window`",
   "version": "0.0.1",
+  "homepage":"http://github.com/CandidBlend/wrapper",
   "devDependencies":{
     "grunt": "0.4.1",
     "grunt-contrib-uglify": "0.1.1",
