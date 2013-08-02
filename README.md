@@ -1,13 +1,13 @@
 
-# Wrapper
+# wrapper
 
 > Wraps any library/function/object within an AMD-compliant definition if possible, otherwise binding to `window`
 
-### What is "Wrapper"?
+### What is "wrapper"?
 
 After dealing with the cumbersome spaghetti code of RequireJS/AMD testing, and library setup depending on users state, I decided to simple encapsulate it into a two line function, where you `return` your library. This could be in the form of a constructor function, an object, etc. 
 
-If the user is using RequireJS, then nothing is aliased (excluding `Wrapper`) to the `window`, and is available in usual fashion through RequireJS. Otherwise, the user can access your library through a general `MyLibrary` or `window.MyLibrary`. Two lines of code wrapped around your library can create a highly compartmentalized module and allow users using Require and other AMD loaders to use your library without any extra work.
+If the user is using RequireJS, then nothing is aliased (excluding `wrapper`) to the `window`, and is available in usual fashion through RequireJS. Otherwise, the user can access your library through a general `MyLibrary` or `window.MyLibrary`. Two lines of code wrapped around your library can create a highly compartmentalized module and allow users using Require and other AMD loaders to use your library without any extra work.
 
 ### Why?
 
@@ -25,7 +25,7 @@ _Creates two modules, one which depends on the other_
 ```javascript
 
 // creates a simpler Logger module
-Wrapper('Logger', [], function() {
+wrapper('Logger', [], function() {
   return {
     log: function(msg) {
       console.log(msg);
@@ -34,7 +34,7 @@ Wrapper('Logger', [], function() {
 });
 
 // create a mock "Blog" lib 
-Wrapper('Blog', ['logger'], function(Logger) {
+wrapper('Blog', ['logger'], function(Logger) {
   // lib constructor
   var Blog = function(params) {
     this.title = params.title || 'unknown';
