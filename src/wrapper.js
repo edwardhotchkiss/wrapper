@@ -13,7 +13,7 @@
   'use strict';
 
   // fn entry point
-  function _Wrapper(name, deps, fn) {
+  function _wrapper(name, deps, fn) {
 
     // format dep name to first char uppercase
     function _formatDepName(d) {
@@ -46,7 +46,7 @@
   
   }
 
-  // bind "Wrapper" to window (root scope)
-  root.Wrapper = _Wrapper;
+  // bind "wrapper" to window (root scope)
+  root.wrapper = _wrapper;
 
 }(window));
