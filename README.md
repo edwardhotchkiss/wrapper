@@ -5,7 +5,7 @@
 
 ### What is "wrapper"?
 
-After dealing with the cumbersome spaghetti code of RequireJS/AMD testing, and library setup depending on users state, I decided to simple encapsulate it into a two line function, where you `return` your library. This could be in the form of a constructor function, an object, etc. 
+After dealing with the cumbersome spaghetti code of RequireJS/AMD testing, and library setup depending on users state, I decided to simply encapsulate it into a short function, where you `return` your library. This could be in the form of a constructor function, an object, etc. This library is **geared towards users that wish to write libraries** in a fast, standardized way while supporting either the general `window.MyLibrary` or being able to use `AMD/RequireJS`. Either way, the syntax is simple, two lines of code replace the typical libraries opening/ending closure lines.
 
 If the user is using RequireJS, then nothing is aliased (excluding `wrapper`) to the `window`, and is available in usual fashion through RequireJS. Otherwise, the user can access your library through a general `MyLibrary` or `window.MyLibrary`. Two lines of code wrapped around your library can create a highly compartmentalized module and allow users using Require and other AMD loaders to use your library without any extra work.
 

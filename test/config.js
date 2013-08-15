@@ -1,14 +1,6 @@
 
 (function(window) {
 
-  // setup config
-  var params = {
-    paths: {
-      app:  '../src'
-    },
-    shim: {}
-  };
-
   // TDD asserts
   window.assert = chai.assert;
 
@@ -16,7 +8,12 @@
   mocha.setup('tdd');
 
   // requirejs config
-  require.config(params);
+  require.config({
+    paths: {
+      app:  '../src'
+    },
+    shim: {}
+  });
 
   // requirejs init
   require(['init'], function(lot) {

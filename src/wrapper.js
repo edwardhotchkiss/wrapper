@@ -12,41 +12,49 @@
 
   'use strict';
 
-  // format dep name to first char uppercase
-  function _formatDepName(d) {
-    return d.charAt(0).toUpperCase() + d.slice(1);
+  /**
+   * @private _formatDepName
+   * @description format dependency name to be lowecase excluding first char
+   * @param {String} dep dependency string
+   * @return {String} formated dep
+   */
+
+  function _formatDepName(dep) {
+    return dep.charAt(0).toUpperCase() + dep.slice(1);
   }
 
-  // fn entry point
-  function _wrapper(name, deps, fn) {
+  /**
+   * @method wrapper
+   * @description creates an AMD compliant or window aliased obj/fn module setup
+   * depending on environment
+   * @param {String} name alias of module, lowercase
+   * @param {Array} deps list of strings that are dependencies
+   * @param {Function} fn return Function to build module
+   * @return {Function} module
+   */
 
-    // description window or empty obj depending on require being defined
+  root.wrapper = function(name, deps, fn) {
+
+    // window or empty obj depending on require being defined
     var _root = (typeof(require) !== 'undefined') ?
-      {} : window;
+      {} : root;
 
     // requirejs define or alternate
     var _define = (typeof(define) === 'function' && define.amd) ?
       define : function(name, deps, fn) {
-        var formated;
-        // process deps
         deps = deps.map(function(dep, index) {
-          if (dep ==='jquery') {
-            return root[$];
-          } else {
-            return root[_formatDepName(dep)];
-          }
+          return (dep === 'jquery') ?
+            root[$] : root[_formatDepName(dep)];
         });
-        root[name] = fn.apply(null, deps);
+        root[_formatDepName(name)] = fn.apply(null, deps);
       };
 
     // execution and assignment block
-    return (function(root, define) {
+    return (function(define) {
+      // config complete, define() module
       define(name, deps, fn);
-    }(_root, _define));
+    }(_define));
   
-  }
-
-  // bind "wrapper" to window (root scope)
-  root.wrapper = _wrapper;
+  };
 
 }(window));

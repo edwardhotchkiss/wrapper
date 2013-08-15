@@ -47,7 +47,12 @@ module.exports = function(grunt) {
       }
     },
     mocha: {
-      index: ['test/runner/index.html']
+      index: ['test/runner/index.html'],
+      options: {
+        bail: true,
+        log: false
+      },
+      reporter: 'Spec'
     }
   });
 
