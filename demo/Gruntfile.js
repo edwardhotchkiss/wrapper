@@ -1,19 +1,15 @@
 
-/**
- * @description watch, concat and build => minify for dist
- */
-
 module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
       options: {
-        banner: '// <%= pkg.name %> v<%= pkg.version %> \n// <%= pkg.homepage %>\n'
+        banner: '// <%= pkg.name %> v<%= pkg.version %>\n'
       },
       build: {
-        src: 'dist/wrapper-<%= pkg.version %>.js',
-        dest: 'dist/wrapper-<%= pkg.version %>.min.js'
+        src: 'dist/<%= pkg.name %>-<%= pkg.version %>.js',
+        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>.min.js'
       }
     },
     jshint: {
@@ -32,9 +28,11 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'src/wrapper.js'
+          'vendor/wrapper-0.0.3.min.js',
+          'src/logger.js',
+          'src/skeleton.js'
         ],
-        dest: 'dist/wrapper-<%= pkg.version %>.js'
+        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>.js'
       }
     },
     watch: {
@@ -43,16 +41,8 @@ module.exports = function(grunt) {
           'Gruntfile.js',
           'src/**/*.js'
         ],
-        tasks: ['jshint','concat']
+        tasks: ['jshint']
       }
-    },
-    mocha: {
-      index: ['test/runner/index.html'],
-      options: {
-        bail: true,
-        log: false
-      },
-      reporter: 'Spec'
     }
   });
 
@@ -60,11 +50,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-mocha');
 
-  grunt.registerTask('test', ['mocha']);
-  grunt.registerTask('build', ['jshint','test','concat','uglify']);
-  grunt.registerTask('default', ['jshint','test','watch']);
+  grunt.registerTask('build', ['jshint','concat','uglify']);
+  grunt.registerTask('default', ['jshint','watch']);
 
 };
 

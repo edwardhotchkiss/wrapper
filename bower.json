@@ -1,6 +1,6 @@
 {
   "name": "wrapper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Wraps any library/function/object within an AMD-compliant definition if possible, otherwise binding to `window`",
   "author": "Edward Hotchkiss <edward@candidblend.la>",
   "contributors":[
