@@ -1,5 +1,4 @@
-
-# wrapper
+# wrapper [![Build Status](https://travis-ci.org/[CandidBlend]/[wrapper].png)](https://travis-ci.org/[CandidBlend]/[wrapper])
 
 > Wraps any library/function/object within an AMD-compliant definition if possible, otherwise binding to `window`
 
