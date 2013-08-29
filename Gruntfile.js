@@ -1,8 +1,4 @@
 
-/**
- * @description watch, concat and build => minify for dist
- */
-
 module.exports = function(grunt) {
 
   grunt.initConfig({
