@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'vendor/wrapper-0.0.3.min.js',
+          'vendor/wrapper-0.0.4.min.js',
           'src/logger.js',
           'src/skeleton.js'
         ],

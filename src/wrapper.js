@@ -1,7 +1,7 @@
 
 /**
  * @library wrapper.js
- * @author Edward Hotchkiss <edwardhotchkiss@me.com>
+ * @author Edward Hotchkiss <edward@candidblend.la>
  * @contributor Avi Deitcher <avi@deitcher.net>
  * @description wraps any function/module/object/lib within an
  * AMD-compliant definition if possible, otherwise binding to `window`
