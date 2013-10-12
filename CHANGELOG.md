@@ -1,4 +1,11 @@
 
+0.0.4/5 / 2013-10-12 
+==================
+
+ * [dist] repackage to 0.0.5, and modify demo to coincide
+ * [weird kids] check for the weird kids when iterating on deps like $ and _
+ * [package, labels] add repo field
+
 0.0.3 / 2013-08-16 
 ==================
 
