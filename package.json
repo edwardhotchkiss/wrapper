@@ -2,7 +2,11 @@
   "name": "wrapper",
   "description": "Wraps any library/function/object within an AMD-compliant definition if possible, otherwise binding to `window`",
   "version": "0.0.4",
-  "homepage": "http://github.com/CandidBlend/wrapper",
+  "homepage": "http://github.com/CandidBlend/wrapper/",
+  "repository":{
+    "type": "git",
+    "url": "git://github.com/CandidBlend/wrapper.git"
+  },
   "scripts": {
     "test": "grunt test"
   },
