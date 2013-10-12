@@ -1,6 +1,6 @@
-// wrapper v0.0.3 
-// http://github.com/CandidBlend/wrapper
-(function(n){"use strict";function e(n){return n.charAt(0).toUpperCase()+n.slice(1)}n.wrapper=function(t,i,r){var u="function"==typeof define&&define.amd?define:function(t,i,r){i=i.map(function(t){return"jquery"===t?n[$]:n[e(t)]}),n[e(t)]=r.apply(null,i)};return function(n){n(t,i,r)}(u)}})(window);
+// wrapper v0.0.5 
+// http://github.com/CandidBlend/wrapper/
+(function(n){"use strict";function e(n){return n.charAt(0).toUpperCase()+n.slice(1)}var o={jquery:"$",lodash:"_",underscore:"_"};n.wrapper=function(r,t,i){var u="function"==typeof define&&define.amd?define:function(r,t,i){t=t.map(function(r){return void 0!==o[r.toLowerCase()]?n[o[r.toLowerCase()]]:n[e(r)]}),console.log(t),n[e(r)]=i.apply(null,t)};return function(n){n(r,t,i)}(u)}})(window);
 
 wrapper('logger', [], function() {
   'use strict';

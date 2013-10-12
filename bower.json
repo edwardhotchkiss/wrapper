@@ -1,13 +1,13 @@
 {
   "name": "wrapper",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Wraps any library/function/object within an AMD-compliant definition if possible, otherwise binding to `window`",
   "author": "Edward Hotchkiss <edward@candidblend.la>",
   "contributors":[
     { "name": "Edward Hotchkiss", "github": "https://github.com/CandidBlend/" },
     { "name": "Avi Deitcher", "github": "https://github.com/deitch/" }
   ],
-  "main": "dist/wrapper-0.0.4.min.js",
+  "main": "dist/wrapper-0.0.5.min.js",
   "ignore": [
     "node_modules",
     "bower_components"

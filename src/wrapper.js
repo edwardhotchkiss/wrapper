@@ -1,4 +1,4 @@
-
+  
 /**
  * @library wrapper.js
  * @author Edward Hotchkiss <edward@candidblend.la>
@@ -20,7 +20,7 @@
   var _weirdKids = {
     'jquery'     : '$',
     'lodash'     : '_',
-    'underscore' : '_',
+    'underscore' : '_'
   };
 
   /**
