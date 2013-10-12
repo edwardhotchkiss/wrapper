@@ -58,7 +58,6 @@
           return (_weirdKids[dep.toLowerCase()] !== undefined) ?
             root[_weirdKids[dep.toLowerCase()]] : root[_formatDepName(dep)];
         });
-        console.log(deps);
         root[_formatDepName(name)] = fn.apply(null, deps);
       };
 
