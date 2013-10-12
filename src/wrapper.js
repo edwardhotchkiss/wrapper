@@ -13,6 +13,17 @@
   'use strict';
 
   /**
+   * @private _weirdKids
+   * @description abbreviations or strange standards for vendored globals
+   */
+
+  var _weirdKids = {
+    'jquery'     : '$',
+    'lodash'     : '_',
+    'underscore' : '_',
+  };
+
+  /**
    * @private _formatDepName
    * @description format dependency name to be lowecase excluding first char
    * @param {String} dep dependency string
@@ -43,9 +54,11 @@
     var _define = (typeof(define) === 'function' && define.amd) ?
       define : function(name, deps, fn) {
         deps = deps.map(function(dep, index) {
-          return (dep === 'jquery') ?
-            root[$] : root[_formatDepName(dep)];
+          // check for _ or $
+          return (_weirdKids[dep.toLowerCase()] !== undefined) ?
+            root[_weirdKids[dep.toLowerCase()]] : root[_formatDepName(dep)];
         });
+        console.log(deps);
         root[_formatDepName(name)] = fn.apply(null, deps);
       };
 
