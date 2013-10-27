@@ -1,4 +1,9 @@
 
+0.1.0 / 2013-10-27 
+==================
+
+ * [dist] 0.1.0 adds ability to self invoke module(s), along with better tests and faster run time
+
 0.0.4/5 / 2013-10-12 
 ==================
 
