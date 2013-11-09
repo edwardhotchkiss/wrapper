@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>wrapper() tests</title>
+</head>
+<body>
+  <script src="../src/wrapper.js"></script>
+  <script>
+    define('logger', [], function() {
+      return {
+        startedAt: (new Date().getTime()),
+        elapsed: function() {
+          return (new Date().getTime() - this.startedAt);
+        },
+        pad: function(ms) {
+          var _max = '000000';
+          return (_max + ms).slice(-(_max.length));
+        },
+        log: function(message) {
+          var log, args, name;
+          args = Array.prototype.slice.call(arguments);
+          args[0] = ('LOG [' + this.pad(this.elapsed()) + '] > ') + message;
+          log = Function.prototype.bind.call(console.log, console);
+          log.apply(console, args);
+        }
+      };
+    });
+    require('main', ['logger'], function(Logger) {
+      var Main = function(name) {
+        this.name = 'main_module';
+      };
+      Main.prototype.init = function() {
+        Logger.log('name: %s', this.name);
+      };
+      return Main;
+    });
+  </script>
+</body>
+</html>
