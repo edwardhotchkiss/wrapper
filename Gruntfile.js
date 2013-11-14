@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     
     uglify: {
       options: {
-        banner: '// <%= pkg.name %> v<%= pkg.version %> \n// <%= pkg.homepage %>\n'
+        banner: '// <%= pkg.name %> v<%= pkg.version %> by <%= pkg.author %> \n// <%= pkg.homepage %>\n'
       },
       build: {
         src: 'dist/wrapper-<%= pkg.version %>.js',

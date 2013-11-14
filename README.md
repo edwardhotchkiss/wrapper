@@ -1,6 +1,6 @@
 # wrapper [![Build Status](https://secure.travis-ci.org/CandidBlend/wrapper.png)](http://travis-ci.org/CandidBlend/wrapper)
 
-> Super small AMD Compliant Lib
+> Wraps any library/function/object within an AMD-compliant definition if possible, otherwise using an internal `require` and `define`
 
 ### Example
 

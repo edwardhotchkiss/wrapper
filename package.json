@@ -1,7 +1,8 @@
 {
   "name": "wrapper",
-  "description": "Wraps any library/function/object within an AMD-compliant definition if possible, otherwise binding to `window`",
-  "version": "0.2.0",
+  "description": "Wraps any library/function/object within an AMD-compliant definition if possible, otherwise using an internal `require` and `define`",
+  "version": "0.3.0",
+  "author": "Edward Hotchkiss <edward@candidblend.la>",
   "homepage": "http://github.com/CandidBlend/wrapper/",
   "repository":{
     "type": "git",
