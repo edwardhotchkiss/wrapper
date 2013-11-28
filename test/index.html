@@ -7,7 +7,7 @@
 <body>
   <script src="../src/wrapper.js"></script>
   <script>
-    define('logger', [], function() {
+    define('Logger', [], function() {
       return {
         startedAt: (new Date().getTime()),
         elapsed: function() {
@@ -26,14 +26,8 @@
         }
       };
     });
-    require('main', ['logger'], function(Logger) {
-      var Main = function(name) {
-        this.name = 'main_module';
-      };
-      Main.prototype.init = function() {
-        Logger.log('name: %s', this.name);
-      };
-      return Main;
+    require('Main', ['Logger'], function(Logger) {
+      Logger.log('name: %s', 'Main!');
     });
   </script>
 </body>

@@ -1,6 +1,7 @@
-# wrapper [![Build Status](https://secure.travis-ci.org/CandidBlend/wrapper.png)](http://travis-ci.org/CandidBlend/wrapper)
 
-> Wraps any library/function/object within an AMD-compliant definition if possible, otherwise using an internal `require` and `define`
+# wrapper
+
+> Uses require.js if possible, otherwise defines an extremely small internal `require` and `define` factory
 
 ### Example
 
@@ -9,8 +10,7 @@
 _Creates two modules, one which depends on the other_
 
 ```javascript
-// define logger internally
-define('logger', [], function() {
+define('Logger', [], function() {
   return {
     startedAt: (new Date().getTime()),
     elapsed: function() {
@@ -30,14 +30,7 @@ define('logger', [], function() {
   };
 });
 
-// main fn execution blog, requiring "logger"
-require('main', ['logger'], function(Logger) {
-  var Main = function(name) {
-    this.name = 'main_module';
-  };
-  Main.prototype.init = function() {
-    Logger.log('name: %s', this.name);
-  };
-  return Main;
+require('Main', ['Logger'], function(Logger) {
+  Logger.log('name: %s', 'Main!');
 });
 ```

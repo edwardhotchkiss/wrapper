@@ -1,8 +1,11 @@
 {
   "name": "wrapper",
   "description": "Wraps any library/function/object within an AMD-compliant definition if possible, otherwise using an internal `require` and `define`",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Edward Hotchkiss <edward@candidblend.la>",
+  "contributors": [
+    { "name" : "Avi Deitcher", "email" : "avi@deitcher.net" }
+  ],
   "homepage": "http://github.com/CandidBlend/wrapper/",
   "repository":{
     "type": "git",
