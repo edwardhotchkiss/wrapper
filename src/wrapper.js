@@ -1,11 +1,10 @@
 
 /**
  * @library wrapper
- * @author Edward Hotchkiss <edward@candidblend.la>
+ * @author Edward Hotchkiss <edward@edwardhotchkiss.com>
  * @contributor Avi Deitcher <avi@deitcher.net>
- * @description extremely small boilerplate for building an AMD compatable library.
- * the idea being that the author is writing modules which are concatenated together
- * into a single file, removing the need to use "./" location/config file references
+ * @description amd is lovely. requirejs is total bullshit, 
+ * along with its disgusting child r.js. let's fix that
  * @license MIT
  */
 
@@ -13,50 +12,43 @@
 
   'use strict';
 
-  /**
-   * @private _modules
-   * @description list of modules in lib
-   */
-
-  var _modules = {};
+  var _modules = {}
 
   /**
-   * @private _findDependency
+   * @private _processDeps
    * @description find and attach dependencies as module defs
    */
 
-  function _findDependency(dependencies) {
-    return dependencies.map(function(dependency, index) {
-      return (root[dependency] || _modules[dependency]) ||
-        new Error('Unknown Module - ("' + dependency + '"")!');
+  function _processDeps(deps) {
+    return _.map(deps, function(dep, index) {
+      return (root[dep] || _modules[dep]) ||
+        new Error('Unknown Module - ("' + dep + '")!');
     });
   }
 
-  /**
-   * @global define
+  /*
+   * @private _define
+   * @description determines define function and deps
    */
 
-  root.define = (typeof(define) === 'function' && define.amd) ?
-    root.define : function(name, dependencies, fn, isModule) {
-      isModule = isModule || true;
-      dependencies = _findDependency(dependencies);
-      if (isModule === true) {
-        _modules[name] = fn.apply(null, dependencies);
+  var _define = (typeof(define) === 'function') ? 
+    define : function(id, deps, fn) {
+      var args = [].slice.call(arguments);
+      id = (typeof(args[0]) === 'string') ? args.shift() : null;
+      deps = (args.length > 1) ? _processDeps(args.shift()) : [];
+      fn = args[0];
+      if (id) {
+        _modules[id] = fn.apply(this, deps);
       } else {
-        return fn.apply(null, dependencies);
+        return fn.apply(this, deps)
       }
     };
 
-  /**
-   * @global require
-   * @param {String} name alias of module, lowercase
-   * @param {Array} dependencies list of strings that are dependencies
-   * @param {Function} fn return Function to build module
+  /*
+   * @globals define/require
+   * @description blast that
    */
 
-  root.require = (typeof(require) === 'function') ?
-    root.require : function(name, dependencies, fn) {
-      return root.define(name, dependencies, fn, false);
-    };
+  root.define = root.require = _define;
 
 }(window));
